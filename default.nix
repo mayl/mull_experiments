@@ -32,11 +32,22 @@ clangStdenv.mkDerivation rec {
   ];
 
 
-  src = fetchFromGitHub {
+  upstream_src = fetchFromGitHub {
     owner = "mull-project";
     repo = "mull";
     rev = version;
     sha256 = "0bzf1zczwzlc3g6rn19lf6jj09lphdkbwd3vq7kc43q6wdnki5n8";
     fetchSubmodules = true;
   };
+
+  my_src = fetchFromGitHub {
+    owner = "mayl";
+    repo = "mull";
+    rev = version;
+    sha256 = "0bzf1zczwzlc3g6rn19lf6jj09lphdkbwd3vq7kc43q6wdnki5n8";
+    fetchSubmodules = true;
+  };
+
+  src = my_src;
+
 }
