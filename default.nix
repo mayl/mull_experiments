@@ -19,9 +19,15 @@ clangStdenv.mkDerivation rec {
     xar
   ];
 
+  prePatch = ''
+    substituteInPlace CMakeLists.txt \
+      --replace 'SET(CMAKE_SKIP_BUILD_RPATH FALSE)' 'SET(CMAKE_SKIP_BUILD_RPATH TRUE)'
+  '';
+
   cmakeFlags = [
     "-DMULL_VERSION=${version}"
     "-DCMAKE_BUILD_TYPE=Release"
+    "-DCMAKE_SKIP_BUILD_RPATH=ON"
     "-DPATH_TO_LLVM=${llvmPackages.libllvm.out.dev}"
     "-DClang_DIR=${llvmPackages.libclang.out.dev}/lib/cmake/clang"
     "-DCMAKE_THREAD_PREFER_PTHREAD=True"
