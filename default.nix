@@ -26,7 +26,7 @@ clangStdenv.mkDerivation rec {
     "-DClang_DIR=${llvmPackages.libclang.out.dev}/lib/cmake/clang"
     "-DCMAKE_THREAD_PREFER_PTHREAD=True"
     "-DTHREADS_PREFER_PTHREAD_FLAG=True"
-    "-DLIB_XML2_INCLUDE_DIR:PATH=${libxml2.out.dev}/include"
+    "-DLIBXML2_INCLUDE_DIRS:PATH=${libxml2.out.dev}/include"
     "-DLIBXML2_LIBRARY:PATH=${libxml2.out}/lib"
   ];
 
