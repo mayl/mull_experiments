@@ -28,26 +28,26 @@ clangStdenv.mkDerivation rec {
     "-DTHREADS_PREFER_PTHREAD_FLAG=True"
     "-DLIB_XML2_INCLUDE_DIR:PATH=${libxml2.out.dev}/include"
     "-DLIBXML2_LIBRARY:PATH=${libxml2.out}/lib"
-    #"-DCMAKE_CXX_FLAGS=-i${libxml2.out.dev}/include"
   ];
 
+  LIBXML2_INCLUDE_DIRS="${libxml2.out.dev}/include";
 
-  upstream_src = fetchFromGitHub {
-    owner = "mull-project";
-    repo = "mull";
-    rev = version;
-    sha256 = "0bzf1zczwzlc3g6rn19lf6jj09lphdkbwd3vq7kc43q6wdnki5n8";
-    fetchSubmodules = true;
-  };
+  # upstream_src = fetchFromGitHub {
+  #   owner = "mull-project";
+  #   repo = "mull";
+  #   rev = version;
+  #   sha256 = "0bzf1zczwzlc3g6rn19lf6jj09lphdkbwd3vq7kc43q6wdnki5n8";
+  #   fetchSubmodules = true;
+  # };
 
-  my_src = fetchFromGitHub {
-    owner = "mayl";
-    repo = "mull";
-    rev = version;
-    sha256 = "0bzf1zczwzlc3g6rn19lf6jj09lphdkbwd3vq7kc43q6wdnki5n8";
-    fetchSubmodules = true;
-  };
+  # my_src = fetchFromGitHub {
+  #   owner = "mayl";
+  #   repo = "mull";
+  #   rev = "HEAD";
+  #   sha256 = lib.fakeSha256;
+  #   fetchSubmodules = true;
+  # };
 
-  src = my_src;
+  src = ../mull_lpm; 
 
 }
