@@ -30,13 +30,10 @@ clangStdenv.mkDerivation rec {
     "-DCMAKE_SKIP_BUILD_RPATH=ON"
     "-DPATH_TO_LLVM=${llvmPackages.libllvm.out.dev}"
     "-DClang_DIR=${llvmPackages.libclang.out.dev}/lib/cmake/clang"
-    "-DCMAKE_THREAD_PREFER_PTHREAD=True"
     "-DTHREADS_PREFER_PTHREAD_FLAG=True"
     "-DLIBXML2_INCLUDE_DIRS:PATH=${libxml2.out.dev}/include"
     "-DLIBXML2_LIBRARY:PATH=${libxml2.out}/lib"
   ];
-
-  LIBXML2_INCLUDE_DIRS="${libxml2.out.dev}/include";
 
   # upstream_src = fetchFromGitHub {
   #   owner = "mull-project";
@@ -46,14 +43,16 @@ clangStdenv.mkDerivation rec {
   #   fetchSubmodules = true;
   # };
 
-  # my_src = fetchFromGitHub {
-  #   owner = "mayl";
-  #   repo = "mull";
-  #   rev = "HEAD";
-  #   sha256 = lib.fakeSha256;
-  #   fetchSubmodules = true;
-  # };
+  my_src = fetchFromGitHub {
+    owner = "mayl";
+    repo = "mull";
+    rev = "HEAD";
+    sha256 = "1y6chvk63v4bfvklg1ry0hkayz0vfmdhwcsshqg8chdv9sabgblz";
+    fetchSubmodules = true;
+  };
 
-  src = ../mull_lpm; 
+  src = my_src;
+
+  #src = ../mull_lpm; 
 
 }
