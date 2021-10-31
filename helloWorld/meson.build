@@ -12,7 +12,7 @@ exe = executable('helloworld', 'helloworld.cpp',
 
 run_target(
   'mull',
-  command: ['/home/larry/projects/mull/mull/build/tools/mull-cxx/mull-cxx', 
+  command: ['mull-cxx', 
     '-ide-reporter-show-killed',
     exe],
   )
