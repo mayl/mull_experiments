@@ -24,6 +24,11 @@ clangStdenv.mkDerivation rec {
       --replace 'SET(CMAKE_SKIP_BUILD_RPATH FALSE)' 'SET(CMAKE_SKIP_BUILD_RPATH TRUE)'
   '';
 
+  postInstall = ''
+    ln -sn $out/bin/mull-cxx-* $out/bin/mull-cxx
+    ln -sn $out/bin/mull-runner-* $out/bin/mull-runner
+  '';
+
   cmakeFlags = [
     "-DMULL_VERSION=${version}"
     "-DCMAKE_BUILD_TYPE=Release"
